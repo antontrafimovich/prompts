@@ -93,4 +93,58 @@ Create or update `/copilot-instructions.md`. If it exists, _merge and preserve_ 
     - Known pitfalls and “Do not do” list (e.g., “Do not import `effector` directly”).
     - Maintenance tips: how to evolve these rules safely.
 
-## Mandatory examples (tailor to this repo’s names/paths)
+Analysis plan (how to extract facts)
+
+Read: pnpm-workspace.yaml, root package.json, each workspace package’s package.json, tsconfig.*, .eslintrc.*, .prettierrc.*, vite.config.*, and any README.md files.
+
+Build a package map: name → path → type (libs/features/sites/apps) via folder heuristics and/or explicit config.
+
+Discover the actual import scopes/aliases (from tsconfig paths).
+
+Identify the actual wrapper name for effector (e.g., @ese/effector) and its exports.
+
+Inspect libs/core for fetcher utils; document their signatures and default behavior.
+
+Inspect libs/styling for theme helpers; find the theme typings.
+
+Inspect libs/ui-kit to confirm wrapped antd components and any usage rules.
+
+Inspect a few representative features that use data-access to verify the 3-file pattern and collect real examples.
+
+Inspect apps/* for Vite config and scripts.
+
+Inspect sites/* (Astro) to understand build commands.
+
+If any item cannot be determined, clearly mark it as Not found and provide the best hint where it would belong.
+
+Quality bar
+
+Write clear, concise, opinionated guidance grounded in this repository’s code.
+
+Prefer lists and code blocks; avoid tables.
+
+Include a short “Why it matters” explanation in each major section.
+
+Provide at least one real code example per key convention (imports, RemoteData, effector wrapper, themed components).
+
+All code samples must compile in this repo after replacing placeholders with discovered imports.
+
+Add a brief Definition of Done at the bottom with a checklist contributors can use.
+
+Idempotency & merging
+
+If /copilot-instructions.md exists, preserve custom content.
+
+Use stable section headings; update sections in place.
+
+If major differences are found on re-run, update the doc, but include a “Changelog” section summarizing changes.
+
+Final step
+
+Create or update /copilot-instructions.md.
+
+Echo a short summary of what changed (headings added/updated).
+
+Do not open PRs or run external services; only write the file.
+
+Now begin: analyze the repo, then write /copilot-instructions.md that satisfies all instructions above.
