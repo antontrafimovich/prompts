@@ -17,3 +17,13 @@ Avoid generic advice ("write tests", "handle errors") - focus on THIS project's 
 Document only discoverable patterns, not aspirational practices
 Reference key files/directories that exemplify important patterns
 Update .github/copilot-instructions.md for the user, then ask for feedback on any unclear or incomplete sections to iterate.
+
+
+--------
+
+
+1. Whenever you run a command in the terminal, pipe the output to a file, output.txt, that you can read from.
+2. You should read the output.txt file to see the results of your commands.
+3. Make sure to overwrite each time so that it doesn't grow too big.
+4. There is a bug in the current version of Copilot that causes it to not read the output of commands correctly.
+5. This workaround allows you to read the output from the temporary file instead.
